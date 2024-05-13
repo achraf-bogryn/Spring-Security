@@ -23,22 +23,17 @@ public class AuthentificationController {
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody User request
     ){
-     return  ResponseEntity.ok(authentificationService.register(request));
+     return  ResponseEntity.ok(authentificationService.
+             register(request));
     }
-
-//    @PostMapping("/login"){
-//        public ResponseEntity<AuthenticationResponse> login(
-//                @RequestBody User request){
-//
-//        }
-
 
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> login(
             @RequestBody User request
     ){
 
-  return ResponseEntity.ok(authentificationService.authenticate(request));
+  return ResponseEntity.ok(authentificationService.
+          authenticate(request));
     }
 
 }
