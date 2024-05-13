@@ -37,6 +37,11 @@ public class User implements UserDetails {
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
+
+    @OneToMany(mappedBy = "user")
+    private List<Token> tokens;
+
+
 //    @Override
 //    public String getUsername() {
 //        return null;
@@ -60,5 +65,18 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", tokens=" + tokens +
+                '}';
     }
 }
