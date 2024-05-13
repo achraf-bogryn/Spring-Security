@@ -21,14 +21,15 @@ import java.io.IOException;
 public class JwtAuthentificationFilter extends OncePerRequestFilter {
 private final JwtService jwtService;
 private final UserDetailsServiceImp userDetailsService;
-    public JwtAuthentificationFilter(JwtService jwtService, UserDetailsServiceImp userDetailsService) {
+    public JwtAuthentificationFilter(JwtService jwtService,
+                                     UserDetailsServiceImp userDetailsService) {
         this.jwtService = jwtService;
         this.userDetailsService = userDetailsService;
     }
 
     @Override
     protected void doFilterInternal(
-                                   @Nonnull HttpServletRequest request,
+                                   @NonNull HttpServletRequest request,
                                     @NonNull HttpServletResponse response,
                                    @NonNull FilterChain filterChain)
             throws ServletException, IOException {
@@ -46,7 +47,7 @@ private final UserDetailsServiceImp userDetailsService;
          UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 //           UsernamePasswordAuthenticationFilter(userDetails , null , userDetails.getAuthorities());
 
-          if(jwtService.isValid(token , userDetails)){
+          if(jwtService.isValid(token,userDetails)){
              UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                 userDetails , null , userDetails.getAuthorities()
            );
